@@ -119,6 +119,9 @@ private
 
 end #module RDFize
 
+# adding the above methods to Bio::Locations
+include RDFize
+
 end # Locations
 
 end # Bio
