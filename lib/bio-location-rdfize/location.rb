@@ -31,6 +31,9 @@ module Bio
 #
 class Location
 
+  # Base URI of FALDO for use with rdfize and rdfize_positions:
+  FALDO = 'http://biohackathon.org/resource/faldo#'.freeze
+
   include Comparable
 	
   # Parses a'location' segment, which can be 'ID:' + ('n' or 'n..m' or 'n^m'
@@ -44,9 +47,6 @@ class Location
   #   documentation)
   # *Returns*:: the Bio::Location object
   def initialize(location = nil)
-
-    # Base URI of FALDO for use with rdfize and rdfize_positions:
-    @faldo = 'http://biohackathon.org/resource/faldo#'
 
     if location
       if location =~ /:/				# (G) ID:location
@@ -243,9 +243,9 @@ class Location
     end
 
     if @caret
-      return """<#{prefix}#{id}> a <#{@faldo}InBetweenPosition> ;
-    <#{@faldo}after> <#{prefix}#{id}:begin> ;
-    <#{@faldo}before> <#{prefix}#{id}:end> .
+      return """<#{prefix}#{id}> a <#{FALDO}InBetweenPosition> ;
+    <#{FALDO}after> <#{prefix}#{id}:begin> ;
+    <#{FALDO}before> <#{prefix}#{id}:end> .
 
 #{rdfize_positions("#{prefix}#{id}", faldo_begin, faldo_end)}
 """
@@ -259,9 +259,9 @@ class Location
       end_uri_suffix = 'end'
     end
 
-    return """<#{prefix}#{id}> a <#{@faldo}Region> ;
-    <#{@faldo}begin> <#{prefix}#{id}:#{begin_uri_suffix}> ;
-    <#{@faldo}end> <#{prefix}#{id}:#{end_uri_suffix}> .
+    return """<#{prefix}#{id}> a <#{FALDO}Region> ;
+    <#{FALDO}begin> <#{prefix}#{id}:#{begin_uri_suffix}> ;
+    <#{FALDO}end> <#{prefix}#{id}:#{end_uri_suffix}> .
 
 #{rdfize_positions("#{prefix}#{id}", faldo_begin, faldo_end, begin_uri_suffix, end_uri_suffix)}
 """
@@ -284,20 +284,20 @@ private
   #   the location's start/end coordinates.
   def rdfize_positions(location_prefix, faldo_begin, faldo_end, begin_suffix = 'begin', end_suffix = 'end')
     if @strand == 1
-      strandtype = "<#{@faldo}ForwardStrandedPosition>"
+      strandtype = "<#{FALDO}ForwardStrandedPosition>"
     else
-      strandtype = "<#{@faldo}ReverseStrandedPosition>"
+      strandtype = "<#{FALDO}ReverseStrandedPosition>"
     end
 
-    begin_uri = """<#{location_prefix}:#{begin_suffix}> a <#{@faldo}ExactPosition>, #{strandtype} ;
-    <#{@faldo}position> #{faldo_begin} .
+    begin_uri = """<#{location_prefix}:#{begin_suffix}> a <#{FALDO}ExactPosition>, #{strandtype} ;
+    <#{FALDO}position> #{faldo_begin} .
 """
 
     if begin_suffix == end_suffix
       end_uri = ''
     else
-      end_uri = """<#{location_prefix}:#{end_suffix}> a <#{@faldo}ExactPosition>, #{strandtype} ;
-    <#{@faldo}position> #{faldo_end} .
+      end_uri = """<#{location_prefix}:#{end_suffix}> a <#{FALDO}ExactPosition>, #{strandtype} ;
+    <#{FALDO}position> #{faldo_end} .
 """
     end
 
