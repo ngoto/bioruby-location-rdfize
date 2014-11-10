@@ -2,7 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/ngoto/bioruby-location-rdfize.png)](http://travis-ci.org/ngoto/bioruby-location-rdfize)
 
-Full description goes here
+This is a BioRuby plugin providing FALDO location RDF output method for
+Bio::Location objects. A method Bio::Location#rdfize is added.
 
 Note: this software is under active development!
 
@@ -43,5 +44,5 @@ This Biogem is published at (http://biogems.info/index.html#bio-location-rdfize)
 
 ## Copyright
 
-Copyright (c) 2014 Naohisa Goto. See LICENSE.txt for further details.
+Copyright (c) 2014 Joachim Baran, Naohisa Goto. See LICENSE.txt for further details.
 
