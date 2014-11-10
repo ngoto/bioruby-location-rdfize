@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/ngoto/bioruby-location-rdfize"
   gem.license = "MIT"
   gem.summary = %Q{FALDO location output method for Bio::Location in BioRuby}
-  gem.description = %Q{This is a BioRuby plugin providing FALDO location RDF output method for Bio::Location objects. A method Bio::Location#rdfize is added.}
+  gem.description = %Q{BioRuby plugin providing FALDO location RDF output method for Bio::Location objects. A method Bio::Location#rdfize is added.}
   gem.email = "ng@bioruby.org"
   gem.authors = [ "Joachim Baran", "Naohisa Goto" ]
   # dependencies defined in Gemfile
