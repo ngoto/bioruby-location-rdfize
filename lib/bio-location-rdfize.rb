@@ -8,5 +8,6 @@
 #
 # In this file only require other files. Avoid other source code.
 
+require 'bio'
 require 'bio-location-rdfize/location-rdfize.rb'
 
